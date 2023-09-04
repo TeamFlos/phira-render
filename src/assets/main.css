@@ -1,0 +1,13 @@
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-display: swap;
+  src: url('./Ubuntu-Regular.ttf');
+}
+
+@layer base {
+  html {
+    font-family: ubuntu, sans-serif, system-ui !important;
+    transition: background-color 0.5s;
+  }
+}

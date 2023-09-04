@@ -1,0 +1,7 @@
+.gitignore
+*.md
+*.json
+*.js
+*.cjs
+*.yml
+*.yaml
