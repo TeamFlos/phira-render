@@ -121,8 +121,9 @@ fn cmd_hidden(program: impl AsRef<OsStr>) -> Command {
         use std::os::windows::process::CommandExt;
         let mut cmd = cmd;
         cmd.creation_flags(0x08000000);
-        return cmd;
+        cmd
     }
+    #[cfg(not(target_os = "windows"))]
     cmd
 }
 
