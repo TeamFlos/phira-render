@@ -111,6 +111,7 @@ pub async fn build_player(config: &RenderConfig) -> Result<BasicPlayer> {
         },
         id: 0,
         rks: config.player_rks,
+        historic_best: 0,
     })
 }
 
@@ -175,7 +176,7 @@ pub async fn main() -> Result<()> {
     };
     dbg!(&ffmpeg);
 
-    let mut painter = TextPainter::new(font);
+    let mut painter = TextPainter::new(font, None);
 
     let mut config = params.config.to_config();
     config.mods = Mods::AUTOPLAY;
@@ -293,7 +294,7 @@ pub async fn main() -> Result<()> {
     let player = build_player(&params.config).await?;
     let mut main = Main::new(
         Box::new(
-            LoadingScene::new(GameMode::Normal, info, config, fs, Some(player), None, None).await?,
+            LoadingScene::new(GameMode::Normal, info, config, fs, Some(player), None, None, None).await?,
         ),
         tm,
         {

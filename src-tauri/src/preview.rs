@@ -56,7 +56,7 @@ pub async fn main() -> Result<()> {
     config.mods |= Mods::AUTOPLAY;
 
     let font = FontArc::try_from_vec(load_file("font.ttf").await?)?;
-    let mut painter = TextPainter::new(font);
+    let mut painter = TextPainter::new(font, None);
 
     let player = build_player(&params.config).await?;
 
@@ -65,7 +65,7 @@ pub async fn main() -> Result<()> {
     let mut main = Main::new(
         Box::new(BaseScene(
             Some(NextScene::Overlay(Box::new(
-                LoadingScene::new(GameMode::Normal, info, config, fs, Some(player), None, None)
+                LoadingScene::new(GameMode::Normal, info, config, fs, Some(player), None, None, None)
                     .await?,
             ))),
             false,
